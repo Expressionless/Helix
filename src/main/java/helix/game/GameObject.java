@@ -1,5 +1,7 @@
 package helix.game;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 import helix.Constants;
@@ -23,12 +25,14 @@ public abstract class GameObject {
 	/**
 	 * Next ID to be assigned
 	 */
-	public static long ID_NEXT = 0;
-
+	private static Long ID_NEXT = 0L;
+	
+	//TODO: Tossing up whether or not I really want this system
+	private static final List<Long> freeIds = new ArrayList<>();
 	/**
 	 * ID of the object
 	 */
-	public final int id;
+	public final Long id;
 
 	/**
 	 * Alarms to be used for timed events
@@ -92,12 +96,16 @@ public abstract class GameObject {
 	 * @param pos  - {@link Point} to spawn the Object at
 	 */
 	public GameObject(Data data, Point pos) {
+		if(freeIds.size() == 0) {
+			this.id = ID_NEXT++;
+		} else {
+			this.id = freeIds.get(0);
+			freeIds.remove(0);
+		}
 		this.pos = pos;
 		this.data = data;
 		this.direction = new Vector2(0, 0);
 		this.initAlarms();
-
-		this.id = (int) (ID_NEXT++);
 
 		data.addObject(this);
 	}
@@ -272,7 +280,14 @@ public abstract class GameObject {
 		return shouldDispose;
 	}
 
-	public final void dispose() {
+	/**
+	 * Free up global variables such as IDs here
+	 */
+	final void dispose() {
+		freeIds.add(this.id);
+	}
+	
+	public final void queueDispose() {
 		shouldDispose = true;
 	}
 

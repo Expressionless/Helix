@@ -143,7 +143,11 @@ public abstract class Data {
 		});
 
 		objects.removeIf((GameObject obj) -> {
-			return obj.willDispose();
+			if(obj.willDispose()) {
+				obj.dispose();
+				return true;
+			}
+			return false;
 		});
 
 		this.dispose();
@@ -284,12 +288,12 @@ public abstract class Data {
 		return this.objectBuffer.add(object);
 	}
 
-	// Getters and Setters	
-	public final Boolean reading() {
+	// Getters and Setters
+	public final Boolean isReading() {
 		return (reader != null);
 	}
 
-	public final Boolean writing() {
+	public final Boolean isWriting() {
 		return (writer != null);
 	}
 
@@ -325,6 +329,19 @@ public abstract class Data {
 		return this.writer;
 	}
 
+	/**
+	 * Get Object by {@link GameObject#id}
+	 * @param id
+	 * @return
+	 */
+	public GameObject getObject(Long id) {
+		for(GameObject object : objects) {
+			if(object.id == id)
+				return object;
+		}
+		return null;
+	}
+	
 	public ArrayList<GameObject> getObjects() {
 		return objects;
 	}
