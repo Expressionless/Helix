@@ -139,7 +139,7 @@ public abstract class Entity extends GameObject {
 	 * @return - an instance of the searchClass type. Null if none exist
 	 */
 	public final <T extends Entity> T findEntity(Class<T> searchClass) {
-		for (GameObject object : this.getData().entities) {
+		for (GameObject object : this.getData().getEntities()) {
 			if (searchClass.isInstance(object))
 				return (T) object;
 		}
@@ -156,7 +156,7 @@ public abstract class Entity extends GameObject {
 	 */
 	public final <T extends Entity> T findNearestEntity(Class<T> searchClass) {
 		GameObject current = null;
-		for (GameObject object : this.getData().entities) {
+		for (GameObject object : this.getData().getEntities()) {
 			if (!searchClass.isInstance(object))
 				continue;
 			if (current == null) {

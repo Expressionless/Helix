@@ -32,20 +32,20 @@ public abstract class Data {
 	/**
 	 * Keep track of ticks
 	 */
-	public static int TICKS = 0;
+	private static Long ticks = 0L;
 
 	/**
 	 * list of all {@link GameObject}s in the application
 	 */
-	public final ArrayList<GameObject> objects, objectBuffer;
+	private final ArrayList<GameObject> objects, objectBuffer;
 	/**
 	 * list of all {@link Entity}s in the application
 	 */
-	public final ArrayList<Entity> entities, entityBuffer;
+	private final ArrayList<Entity> entities, entityBuffer;
 	/**
 	 * list of all {@link Screen}s in the application
 	 */
-	public final ArrayList<Screen> screens;
+	private final ArrayList<Screen> screens;
 
 	/**
 	 * Read binary data with this
@@ -166,7 +166,7 @@ public abstract class Data {
 	 * @param delta - Time since last frame (seconds)
 	 */
 	public final void update(float delta) {
-		TICKS++;
+		ticks++;
 
 		this.disposeCore();
 
@@ -269,22 +269,27 @@ public abstract class Data {
 		writer = null;
 	}
 	
-	public boolean addObject(GameObject object) {
+	/**
+	 * Add a {@link GameObject} to the game data
+	 * @param object
+	 * @return true if the object was added, false if object is null
+	 * or if object was unable to be added to it's respective buffer
+	 */
+	public final Boolean addObject(GameObject object) {
 		if(object == null)
 			return false;
 		if(object instanceof Entity)
-			this.entityBuffer.add((Entity) object);
-		this.objectBuffer.add(object);
-		
-		return true;
+			if(!this.entityBuffer.add((Entity) object))
+				return false;
+		return this.objectBuffer.add(object);
 	}
 
 	// Getters and Setters	
-	public final boolean reading() {
+	public final Boolean reading() {
 		return (reader != null);
 	}
 
-	public final boolean writing() {
+	public final Boolean writing() {
 		return (writer != null);
 	}
 
@@ -318,5 +323,25 @@ public abstract class Data {
 
 	public final BinaryWriter getWriter() {
 		return this.writer;
+	}
+
+	public ArrayList<GameObject> getObjects() {
+		return objects;
+	}
+
+	public ArrayList<Entity> getEntities() {
+		return entities;
+	}
+
+	public ArrayList<Screen> getScreens() {
+		return screens;
+	}
+
+	public BaseGame getGame() {
+		return game;
+	}
+
+	public static Long getTicks() {
+		return ticks;
 	}
 }

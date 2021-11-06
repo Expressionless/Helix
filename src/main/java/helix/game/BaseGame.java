@@ -93,7 +93,7 @@ public abstract class BaseGame extends Game {
 		this.data.init();
 
 		try {
-			this.setScreen(this.getData().screens.get(0));
+			this.setScreen(this.getData().getScreens().get(0));
 		} catch (NullPointerException e) {
 
 		}
@@ -168,6 +168,10 @@ public abstract class BaseGame extends Game {
 		super.setScreen(s);
 	}
 	public void setScreen(int num) {
-		this.setScreen(this.getData().screens.get(num));
+		this.setScreen(this.getData().getScreens().get(num));
+	}
+	
+	public helix.gfx.Screen getScreen(int index) {
+		return this.getData().getScreens().get(index);
 	}
 }

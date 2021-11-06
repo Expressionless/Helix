@@ -137,6 +137,7 @@ public abstract class GameObject {
 	}
 
 	@SuppressWarnings("unchecked")
+	// TODO: Optimize this
 	/**
 	 * Find the first instance of some {@link GameObject}
 	 * 
@@ -144,7 +145,7 @@ public abstract class GameObject {
 	 * @return - the first instance of searchClass or null if none is found
 	 */
 	public final <T extends GameObject> T find(Class<T> searchClass) {
-		for (GameObject object : data.objects) {
+		for (GameObject object : data.getObjects()) {
 			if (searchClass.isInstance(object))
 				return (T) object;
 		}
@@ -160,7 +161,7 @@ public abstract class GameObject {
 	 */
 	public final <T extends GameObject> T findNearest(Class<T> searchClass) {
 		GameObject current = null;
-		for (GameObject object : data.objects) {
+		for (GameObject object : data.getObjects()) {
 			if (!searchClass.isInstance(object))
 				continue;
 			if (current == null) {
