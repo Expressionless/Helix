@@ -5,11 +5,11 @@ import java.lang.reflect.Field;
 import java.util.Set;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
 import helix.annotations.QueueAsset;
+import helix.gfx.Screen;
 import helix.utils.ClassUtils;
 
 /**
@@ -163,15 +163,25 @@ public abstract class BaseGame extends Game {
 		this.data = data;
 	}
 
-	@Override
 	public void setScreen(Screen s) {
 		super.setScreen(s);
 	}
-	public void setScreen(int num) {
-		this.setScreen(this.getData().getScreens().get(num));
+	
+	public void setScreen(Long screenId) {
+		this.setScreen(this.getData().getScreenById(screenId));
 	}
 	
-	public helix.gfx.Screen getScreen(int index) {
+	@Deprecated
+	public void setScreen(int index) {
+		this.setScreen(this.getScreen(index));
+	}
+	
+	@Deprecated
+	public Screen getScreen(int index) {
 		return this.getData().getScreens().get(index);
+	}
+	
+	public Screen getScreenById(Long id) {
+		return this.getData().getScreenById(id);
 	}
 }

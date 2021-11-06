@@ -44,17 +44,6 @@ public abstract class Data {
 	 */
 	private final ArrayList<Entity> entities, entityBuffer;
 	
-	// TODO: Consider changing search algorithms? O(n) ain't pog
-	public Screen getScreen(Long id) {
-		for(Screen screen : screens) {
-			if(screen.id == id) {
-				return screen;
-			}
-		}
-		
-		return null;
-	}
-	
 	/**
 	 * list of all {@link Screen}s in the application
 	 */
@@ -372,6 +361,26 @@ public abstract class Data {
 		return entities;
 	}
 
+	public Boolean addScreen(Screen screen) {
+		return this.screens.add(screen);
+	}
+	
+	// TODO: Consider changing search algorithms? O(n) ain't pog
+	public Screen getScreenById(Long id) {
+		for(Screen screen : screens) {
+			if(screen.id == id) {
+				return screen;
+			}
+		}
+		
+		return null;
+	}
+
+	@Deprecated
+	public Screen getScreenByIndex(int index) {
+		return getScreens().get(index);
+	}
+	
 	public ArrayList<Screen> getScreens() {
 		return screens;
 	}
