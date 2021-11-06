@@ -22,7 +22,7 @@ import helix.utils.io.BinaryWriter;
 /**
  * Basic Data class that stores all the objects, entities and screens
  * 
- * @author bmeachem
+ * @author Sly
  *
  * @see {@link GameObject}, {@link Entity}, {@link Screen}
  */
@@ -38,10 +38,23 @@ public abstract class Data {
 	 * list of all {@link GameObject}s in the application
 	 */
 	private final ArrayList<GameObject> objects, objectBuffer;
+	
 	/**
 	 * list of all {@link Entity}s in the application
 	 */
 	private final ArrayList<Entity> entities, entityBuffer;
+	
+	// TODO: Consider changing search algorithms? O(n) ain't pog
+	public Screen getScreen(Long id) {
+		for(Screen screen : screens) {
+			if(screen.id == id) {
+				return screen;
+			}
+		}
+		
+		return null;
+	}
+	
 	/**
 	 * list of all {@link Screen}s in the application
 	 */
@@ -346,6 +359,15 @@ public abstract class Data {
 		return objects;
 	}
 
+	public Entity getEntity(Long id) {
+		GameObject object = getObject(id);
+		if(!(object instanceof Entity)) {
+			return null;
+		}
+		
+		return (Entity)object;
+	}
+	
 	public ArrayList<Entity> getEntities() {
 		return entities;
 	}

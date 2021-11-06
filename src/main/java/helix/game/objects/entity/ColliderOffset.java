@@ -2,7 +2,7 @@ package helix.game.objects.entity;
 
 /**
  * Some Collider Offsets
- * @author bmeachem
+ * @author Sly
  *
  */
 public enum ColliderOffset {

@@ -13,7 +13,7 @@ import helix.Constants;
 /**
  * Read in binary from a location
  * Stores an array of bytes read in from a file
- * @author bmeachem
+ * @author Sly
  *
  * @see {@link Byte}
  */

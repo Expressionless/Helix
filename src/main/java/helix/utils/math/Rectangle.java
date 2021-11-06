@@ -3,7 +3,7 @@ package helix.utils.math;
 /**
  * Basic Implementation of {@link com.badlogic.gdx.math.Rectangle}
  * with some added support for helix
- * @author bmeachem
+ * @author Sly
  *
  */
 public class Rectangle extends com.badlogic.gdx.math.Rectangle {
@@ -29,14 +29,14 @@ public class Rectangle extends com.badlogic.gdx.math.Rectangle {
 	 * @return Whether or not this Rectangle contains some Point
 	 */
 	public boolean contains(Point p) {
-		return this.contains(new Vector2(p.getX(), p.getY()));
+		return this.contains(new Vector2D(p.getX(), p.getY()));
 	}
 
 	/**
-	 * Check if this Rectangle contains some {@link Vector2}
+	 * Check if this Rectangle contains some {@link Vector2D}
 	 * @return Whether or not this Rectangle contains some Vector2
 	 */
-	public boolean contains(Vector2 v) {
+	public boolean contains(Vector2D v) {
 		return super.contains(new com.badlogic.gdx.math.Vector2(v.getX(), v.getY()));
 	}
 	

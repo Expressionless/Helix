@@ -4,10 +4,10 @@ import java.text.DecimalFormat;
 
 /**
  * A 2 Dimensional Vector class with some basic operations
- * @author bmeachem
+ * @author Sly
  *
  */
-public class Vector2 {
+public class Vector2D {
 	private static final DecimalFormat df = new DecimalFormat("0.00");
 
 	/**
@@ -20,7 +20,7 @@ public class Vector2 {
 	 * @param x (float)
 	 * @param y (float)
 	 */
-	public Vector2(float x, float y) {
+	public Vector2D(float x, float y) {
 		this.x = x;
 		this.y = y;
 	}
@@ -30,18 +30,18 @@ public class Vector2 {
 	 * @param x
 	 * @param y
 	 */
-	public Vector2(Number x, Number y) {
+	public Vector2D(Number x, Number y) {
 		this(x.floatValue(), y.floatValue());
 	}
 
 	/**
-	 * Sub another {@link Vector2} from this one
+	 * Sub another {@link Vector2D} from this one
 	 * (this - other)
 	 * @param other
 	 * @return - a new resultant Vector2 from the operation
 	 */
-	public Vector2 sub(Vector2 other) {
-		return new Vector2(this.x - other.x, this.y - other.y);
+	public Vector2D sub(Vector2D other) {
+		return new Vector2D(this.x - other.x, this.y - other.y);
 	}
 
 	/**
@@ -51,17 +51,17 @@ public class Vector2 {
 	 * @param y
 	 * @return - a new resultant Vector2 from the operation
 	 */
-	public Vector2 sub(float x, float y) {
-		return this.sub(new Vector2(x, y));
+	public Vector2D sub(float x, float y) {
+		return this.sub(new Vector2D(x, y));
 	}
 
 	/**
-	 * Add a {@link Vector2} to this one
+	 * Add a {@link Vector2D} to this one
 	 * @param other - Other Vector2 to add
 	 * @return - a new resultant Vector2 from the operation
 	 */
-	public Vector2 add(Vector2 other) {
-		return new Vector2(other.x + x, other.y + y);
+	public Vector2D add(Vector2D other) {
+		return new Vector2D(other.x + x, other.y + y);
 	}
 
 	/**
@@ -70,8 +70,8 @@ public class Vector2 {
 	 * @param y
 	 * @return - a new resultant Vector2 from the operation
 	 */
-	public Vector2 add(float x, float y) {
-		return this.add(new Vector2(x, y));
+	public Vector2D add(float x, float y) {
+		return this.add(new Vector2D(x, y));
 	}
 
 	/**
@@ -79,8 +79,8 @@ public class Vector2 {
 	 * @param scalar
 	 * @return - a new resultant Vector2 from the operation
 	 */
-	public Vector2 multiply(float scalar) {
-		return new Vector2(this.x * scalar, this.y * scalar);
+	public Vector2D multiply(float scalar) {
+		return new Vector2D(this.x * scalar, this.y * scalar);
 	}
 
 	/**
@@ -133,13 +133,13 @@ public class Vector2 {
 	 * Get a Unit Vector of this Vector2. Unit Vectors always have length = 1
 	 * @return a Unit Vector of this Vector2
 	 */
-	public Vector2 getUnitVector() {
-		Vector2 vector = this.copy();
+	public Vector2D getUnitVector() {
+		Vector2D vector = this.copy();
 		double mag = vector.length();
 		if(mag == 0)
-			return new Vector2(0 ,0);
+			return new Vector2D(0 ,0);
 		
-		vector = new Vector2(vector.getX() / mag, vector.getY() / mag);
+		vector = new Vector2D(vector.getX() / mag, vector.getY() / mag);
 		if((int)Math.round(vector.length()) != 1)
 			System.err.println("BAD UNIT VECTOR OF: " + vector.toString());
 		return vector;
@@ -149,8 +149,8 @@ public class Vector2 {
 	 * Return a copy of this Vector2
 	 * @return a copy of this Vector2
 	 */
-	public Vector2 copy() {
-		return new Vector2(x, y);
+	public Vector2D copy() {
+		return new Vector2D(x, y);
 	}
 	
 	/**

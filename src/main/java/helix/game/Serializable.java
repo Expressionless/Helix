@@ -5,7 +5,7 @@ import helix.utils.io.BinaryWriter;
 
 /**
  * Serializable interface to enable data redaing/writing
- * @author bmeachem
+ * @author Sly
  *
  */
 public interface Serializable {

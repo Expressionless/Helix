@@ -16,7 +16,7 @@ import helix.utils.math.Point;
  * Entity class. Contains basic rendering and collision data and extends from
  * {@link GameObject}
  * 
- * @author bmeachem
+ * @author Sly
  *
  */
 public abstract class Entity extends GameObject {

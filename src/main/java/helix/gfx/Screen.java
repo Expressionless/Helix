@@ -8,10 +8,15 @@ import helix.game.Data;
 /**
  * Basic implementation of {@link ScreenAdapater}
  * Contains references to {@link Data} and {@link BaseGame}
- * @author bmeachem
+ * @author Sly
  *
  */
 public abstract class Screen extends ScreenAdapter {
+	
+	// Screens are less dynamic than game object (or at least should be) 
+	// so we can treat them as such
+	private static Long ID_NEXT = 0L;
+	public final Long id = ID_NEXT++;
 	
 	private boolean initialized = false;
 	

@@ -11,7 +11,7 @@ import helix.Constants;
 
 /**
  * Basic Binary file writer
- * @author bmeachem
+ * @author Sly
  *
  */
 public class BinaryWriter {

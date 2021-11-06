@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 
 import helix.Constants;
-import helix.utils.math.Vector2;
+import helix.utils.math.Vector2D;
 
 /**
  * Basic Implementation of a Sprite class
@@ -14,7 +14,7 @@ import helix.utils.math.Vector2;
  * - a main {@link Animation}
  * - name
  * - {@link Rectangle} bounds of the sprite being animated
- * @author bmeachem
+ * @author Sly
  *
  */
 public class Sprite {
@@ -33,7 +33,7 @@ public class Sprite {
 	 * Current scale to render the sprite at. Does not affect the
 	 * {@link Sprite#animation} scale
 	 */
-	private Vector2 scale;
+	private Vector2D scale;
 
 	/**
 	 * whether or not the sprite is flipped. Does not affect the {@link Sprite#animation}
@@ -56,7 +56,7 @@ public class Sprite {
 		else
 			this.name = animation.getName();
 
-		scale = new Vector2(1, 1);
+		scale = new Vector2D(1, 1);
 		bounds = new Rectangle(0, 0, this.animation.getWidth(), this.animation.getHeight());
 	}
 	
@@ -187,16 +187,16 @@ public class Sprite {
 		return bounds.height;
 	}
 
-	public Vector2 getScale() {
+	public Vector2D getScale() {
 		return scale;
 	}
 
-	public void setScale(Vector2 scale) {
+	public void setScale(Vector2D scale) {
 		this.scale = scale.copy();
 	}
 	
 	public void setScale(float x, float y) {
-		this.setScale(new Vector2(x, y));
+		this.setScale(new Vector2D(x, y));
 	}
 	
 	public Sprite copy() {

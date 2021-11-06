@@ -3,7 +3,7 @@ package helix.utils.math;
 /**
  * Some helpful utilities to use when working with numbers
  * 
- * @author bmeachem
+ * @author Sly
  *
  */
 public class NumberUtils {

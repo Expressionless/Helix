@@ -2,7 +2,7 @@ package helix.game.objects.alarm;
 
 /**
  * Timer that triggers a callback method after a set amount of time (seconds)
- * @author bmeachem
+ * @author Sly
  * 
  * @see {@link Event}
  */

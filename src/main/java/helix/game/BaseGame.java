@@ -15,7 +15,7 @@ import helix.utils.ClassUtils;
 /**
  * Basic implementation of {@link com.badlogic.gdx.Game}
  * 
- * @author bmeachem
+ * @author Sly
  *
  */
 public abstract class BaseGame extends Game {

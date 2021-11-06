@@ -6,7 +6,7 @@ import helix.utils.math.NumberUtils;
 
 /**
  * Engine constants
- * @author bmeachem
+ * @author Sly
  *
  */
 public class Constants {

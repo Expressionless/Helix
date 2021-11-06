@@ -9,9 +9,19 @@ import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
+/**
+ * Generic Class Utilities
+ * @author Sly
+ *
+ */
 public class ClassUtils {
 	public static final String CLASS_PATH = new File("").getAbsolutePath() + "/src/main/java/main";
 
+	/**
+	 * For when running from a compiled jar file
+	 * @return all distinct {@link Class}es in the compiled jar
+	 * @throws IOException - if an IOException has occurred
+	 */
 	public static Set<Class<?>> getClassesFromJarFile() throws IOException {
 		Set<Class<?>> clazzes = new HashSet<>();
 		String path = getJarFile();

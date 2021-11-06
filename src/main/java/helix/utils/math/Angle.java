@@ -2,7 +2,7 @@ package helix.utils.math;
 
 /**
  * Some easy angles (In degrees)
- * @author bmeachem
+ * @author Sly
  *
  */
 public enum Angle {

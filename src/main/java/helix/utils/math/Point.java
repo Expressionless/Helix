@@ -3,7 +3,7 @@ package helix.utils.math;
 /**
  * Basic implementation of a Point class
  * Contains some methods for working with points and basic coordinate storage
- * @author bmeachem
+ * @author Sly
  *
  */
 public class Point {
@@ -46,7 +46,7 @@ public class Point {
 	 * @param other
 	 * @return - a new resultant point of the operation
 	 */
-	public Point sub(Vector2 other) {
+	public Point sub(Vector2D other) {
 		return this.sub(other.toPoint()).copy();
 	}
 	
@@ -64,7 +64,7 @@ public class Point {
 	 * @param other - other Vector2 to add
 	 * @return - a new resultant point of the operation
 	 */
-	public Point add(Vector2 other) {
+	public Point add(Vector2D other) {
 		return this.add(new Point(other.getX(), other.getY()));
 	}
 	
@@ -84,8 +84,8 @@ public class Point {
 	 * Return this Point as a Vector2
 	 * @return
 	 */
-	public Vector2 toVector2() {
-		return new Vector2(x, y);
+	public Vector2D toVector2() {
+		return new Vector2D(x, y);
 	}
 	
 	/**

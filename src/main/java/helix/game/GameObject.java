@@ -8,13 +8,13 @@ import helix.Constants;
 import helix.game.objects.alarm.Alarm;
 import helix.game.objects.alarm.Event;
 import helix.utils.math.Point;
-import helix.utils.math.Vector2;
+import helix.utils.math.Vector2D;
 
 /**
  * GameObject that stores basic stuff for Game Objects, such as Alarms, a
  * position, direction, and access to the Data object
  * 
- * @author bmeachem
+ * @author Sly
  *
  * @see {@link Data}, {@link Alarm}
  */
@@ -52,7 +52,7 @@ public abstract class GameObject {
 	/**
 	 * Direction the object travels in
 	 */
-	private Vector2 direction;
+	private Vector2D direction;
 
 	/**
 	 * Data of the application
@@ -104,7 +104,7 @@ public abstract class GameObject {
 		}
 		this.pos = pos;
 		this.data = data;
-		this.direction = new Vector2(0, 0);
+		this.direction = new Vector2D(0, 0);
 		this.initAlarms();
 
 		data.addObject(this);
@@ -264,11 +264,11 @@ public abstract class GameObject {
 		this.setPos(this.getPos().getX() + x, this.getPos().getY() + y);
 	}
 
-	public final Vector2 getDirection() {
+	public final Vector2D getDirection() {
 		return direction;
 	}
 
-	public final void setDirection(Vector2 dir) {
+	public final void setDirection(Vector2D dir) {
 		this.direction = dir;
 	}
 

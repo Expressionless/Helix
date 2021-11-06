@@ -9,7 +9,7 @@ import com.badlogic.gdx.utils.Array;
  * takes in a {@link TextureRegion} and spits out an animation
  * 
  * 
- * @author bmeachem
+ * @author Sly
  */
 public class Animation {
 	private static final float MILLISECONDS = 1000;

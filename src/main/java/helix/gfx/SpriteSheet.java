@@ -7,7 +7,7 @@ import helix.game.Data;
 
 /**
  * SpriteSheet class to hold references to a grid of {@link Sprite}s
- * @author bmeachem
+ * @author Sly
  *
  */
 public class SpriteSheet {

@@ -1,8 +1,8 @@
 package helix.game.objects.alarm;
 
 /**
- * Event Interfact for the alarm callback
- * @author bmeachem
+ * Functional interface for the alarm callback
+ * @author Sly
  *
  */
 public interface Event {
