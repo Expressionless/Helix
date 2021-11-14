@@ -1,6 +1,7 @@
 package helix.gfx;
 
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.graphics.Camera;
 
 import helix.game.BaseGame;
 import helix.game.Data;
@@ -11,7 +12,7 @@ import helix.game.Data;
  * @author Sly
  *
  */
-public abstract class Screen extends ScreenAdapter {
+public abstract class Room extends ScreenAdapter {
 	
 	// Screens are less dynamic than game object (or at least should be) 
 	// so we can treat them as such
@@ -21,13 +22,13 @@ public abstract class Screen extends ScreenAdapter {
 	private boolean initialized = false;
 	
 	/**
-	 * Basic Step event of the screen. Called before {@link Screen#draw}
+	 * Basic Step event of the screen. Called before {@link Room#draw}
 	 * @param delta - Time since last update (seconds)
 	 */
 	protected abstract void step(float delta);
 	
 	/**
-	 * Basic Draw event of the screen. Called after {@link Screen#step}
+	 * Basic Draw event of the screen. Called after {@link Room#step}
 	 * @param delta - Time since last update (seconds)
 	 */
 	protected abstract void draw(float delta);
@@ -48,7 +49,7 @@ public abstract class Screen extends ScreenAdapter {
 	 * Create a new Screen and link it to a {@link BaseGame}
 	 * @param game - Game to link to 
 	 */
-	public Screen(BaseGame game) {
+	public Room(BaseGame game) {
 		this.game = game;
 		this.data = game.getData();
 	}
@@ -86,5 +87,14 @@ public abstract class Screen extends ScreenAdapter {
 	
 	public boolean isInitialized() {
 		return initialized;
+	}
+	
+	public Room getCurrentRoom() {
+		
+	}
+	
+	// TODO: Implement multiple cameras lol
+	public Camera getCurrentCamera() {
+		return getData().getCamera();
 	}
 }

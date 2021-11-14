@@ -1,5 +1,6 @@
 package helix;
 
+
 import java.io.File;
 
 import helix.utils.math.NumberUtils;
@@ -30,5 +31,7 @@ public class Constants {
 	public static final float MIN_LERP_DIST = 0.001f;
 
 	public static final String TEXTURE_FIELD_NAME = "TEXTURE_REF";
+	
+	public static final int DEPTH_DEFAULT = 0;
 	
 }

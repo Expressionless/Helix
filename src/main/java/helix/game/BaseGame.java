@@ -9,7 +9,7 @@ import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
 import helix.annotations.QueueAsset;
-import helix.gfx.Screen;
+import helix.gfx.Room;
 import helix.utils.ClassUtils;
 
 /**
@@ -53,10 +53,10 @@ public abstract class BaseGame extends Game {
 	protected abstract void start();
 
 	/**
-	 * Ran before {@link BaseGame#start}. Used to add {@link helix.game.gfx.Screen}s
+	 * Ran before {@link BaseGame#start}. Used to add {@link helix.game.Room.Screen}s
 	 * to the game
 	 */
-	protected abstract void addScreens();
+	protected abstract void addRooms();
 
 	/**
 	 * Create a new {@link BaseGame} with specified frame title, height and width
@@ -83,7 +83,7 @@ public abstract class BaseGame extends Game {
 	}
 
 	public final void create() {
-		this.addScreens();
+		this.addRooms();
 
 		// Load loading screen stuff
 		this.getData().getManager().finishLoading();
@@ -93,7 +93,7 @@ public abstract class BaseGame extends Game {
 		this.data.init();
 
 		try {
-			this.setScreen(this.getData().getScreens().get(0));
+			this.setRoom(this.getData().getRooms().get(0));
 		} catch (NullPointerException e) {
 
 		}
@@ -163,25 +163,29 @@ public abstract class BaseGame extends Game {
 		this.data = data;
 	}
 
-	public void setScreen(Screen s) {
-		super.setScreen(s);
+	public void setRoom(Room room) {
+		super.setScreen(room);
 	}
 	
-	public void setScreen(Long screenId) {
-		this.setScreen(this.getData().getScreenById(screenId));
-	}
-	
-	@Deprecated
-	public void setScreen(int index) {
-		this.setScreen(this.getScreen(index));
+	public void setRoom(Long roomId) {
+		this.setRoom(this.getData().getRoomById(roomId));
 	}
 	
 	@Deprecated
-	public Screen getScreen(int index) {
-		return this.getData().getScreens().get(index);
+	/**
+	 * Set room by list index
+	 * @param index
+	 */
+	public void setRoom(int index) {
+		this.setRoom(this.getRoom(index));
 	}
 	
-	public Screen getScreenById(Long id) {
-		return this.getData().getScreenById(id);
+	@Deprecated
+	public Room getRoom(int index) {
+		return this.getData().getRooms().get(index);
+	}
+	
+	public Room getRoomById(Long id) {
+		return this.getData().getRoomById(id);
 	}
 }

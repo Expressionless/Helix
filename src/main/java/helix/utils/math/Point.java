@@ -6,6 +6,8 @@ package helix.utils.math;
  * @author Sly
  *
  */
+// TODO: Phase out Point in favour of Vector2D
+@Deprecated
 public class Point {
 
 	/**

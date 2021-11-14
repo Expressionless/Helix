@@ -144,6 +144,27 @@ public class Vector2D {
 			System.err.println("BAD UNIT VECTOR OF: " + vector.toString());
 		return vector;
 	}
+	
+	/**
+	 * Get a {@link Vector2D} unit vector of the specified direction
+	 * @param direction - direction in radians with respect to the positive x-axis
+	 * @return
+	 */
+	public static Vector2D getUnitVector(float direction) {
+		return getUnitVector((double)direction);
+	}
+
+	/**
+	 * Get a {@link Vector2D} unit vector of the specified direction
+	 * @param direction - direction in radians with respect to the positive x-axis
+	 * @return
+	 */
+	public static Vector2D getUnitVector(double direction) {
+		double xDir = Math.acos(direction);
+		double yDir = Math.asin(direction);
+		
+		return new Vector2D(xDir, yDir);
+	}
 
 	/**
 	 * Return a copy of this Vector2

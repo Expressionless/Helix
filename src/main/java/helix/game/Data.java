@@ -14,7 +14,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import helix.Constants;
 import helix.game.objects.Entity;
 import helix.gfx.Animation;
-import helix.gfx.Screen;
+import helix.gfx.Room;
 import helix.gfx.Sprite;
 import helix.utils.io.BinaryReader;
 import helix.utils.io.BinaryWriter;
@@ -24,7 +24,7 @@ import helix.utils.io.BinaryWriter;
  * 
  * @author Sly
  *
- * @see {@link GameObject}, {@link Entity}, {@link Screen}
+ * @see {@link GameObject}, {@link Entity}, {@link Room}
  */
 public abstract class Data {
 	protected static Logger log = Logger.getLogger(Data.class.getCanonicalName());
@@ -45,9 +45,9 @@ public abstract class Data {
 	private final ArrayList<Entity> entities, entityBuffer;
 	
 	/**
-	 * list of all {@link Screen}s in the application
+	 * list of all {@link Room}s in the application
 	 */
-	private final ArrayList<Screen> screens;
+	private final ArrayList<Room> screens;
 
 	/**
 	 * Read binary data with this
@@ -361,13 +361,13 @@ public abstract class Data {
 		return entities;
 	}
 
-	public Boolean addScreen(Screen screen) {
+	public Boolean addScreen(Room screen) {
 		return this.screens.add(screen);
 	}
 	
 	// TODO: Consider changing search algorithms? O(n) ain't pog
-	public Screen getScreenById(Long id) {
-		for(Screen screen : screens) {
+	public Room getRoomById(Long id) {
+		for(Room screen : screens) {
 			if(screen.id == id) {
 				return screen;
 			}
@@ -377,11 +377,11 @@ public abstract class Data {
 	}
 
 	@Deprecated
-	public Screen getScreenByIndex(int index) {
-		return getScreens().get(index);
+	public Room getScreenByIndex(int index) {
+		return getRooms().get(index);
 	}
 	
-	public ArrayList<Screen> getScreens() {
+	public ArrayList<Room> getRooms() {
 		return screens;
 	}
 

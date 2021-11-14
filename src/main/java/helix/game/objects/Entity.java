@@ -43,6 +43,14 @@ public abstract class Entity extends GameObject {
 	 */
 	private Collider collider;
 
+	public Entity(Data data, Point pos, float depth) {
+		super(data, pos);
+
+		this.sprites = new HashMap<String, Sprite>();
+		this.currentSprite = null;
+		this.collider = new Collider(this);
+	}
+	
 	/**
 	 * Create a basic Entity
 	 * 
@@ -50,11 +58,15 @@ public abstract class Entity extends GameObject {
 	 * @param pos
 	 */
 	public Entity(Data data, Point pos) {
-		super(data, pos);
-
-		this.sprites = new HashMap<String, Sprite>();
-		this.currentSprite = null;
-		this.collider = new Collider(this);
+		this(data, pos, pos.getY());
+	}
+	
+	public Entity(Data data, float x, float y, float depth) {
+		this(data, new Point(x, y));
+	}
+	
+	public Entity(Data data, float x, float y) {
+		this(data, new Point(x, y));
 	}
 
 	@Override
@@ -89,10 +101,11 @@ public abstract class Entity extends GameObject {
 	 * @param batch - SpriteBatch to draw the entity with
 	 */
 	protected void draw(SpriteBatch batch) {
+		
 	}
 
 	/**
-	 * Add a spriter to the entity's spriteset
+	 * Add a sprite to the entity's spriteset
 	 * 
 	 * @param spriteName - Name of the sprite
 	 * @param numFrames  - Number of frames the sprite has in it
@@ -103,7 +116,7 @@ public abstract class Entity extends GameObject {
 	}
 
 	/**
-	 * Add a spriter to the entity's spriteset
+	 * Add a sprite to the entity's spriteset
 	 * 
 	 * @param spriteName - Name of the sprite
 	 * @return - if the sprite was added successfully
@@ -113,7 +126,7 @@ public abstract class Entity extends GameObject {
 	}
 
 	/**
-	 * Add a spriter to the entity's spriteset
+	 * Add a sprite to the entity's spriteset
 	 * 
 	 * @param spriteName - Name of the sprite
 	 * @param numFrames  - Number of frames the sprite has in it

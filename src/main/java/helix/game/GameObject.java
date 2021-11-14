@@ -2,7 +2,6 @@ package helix.game;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 import helix.Constants;
 import helix.game.objects.alarm.Alarm;
@@ -19,8 +18,6 @@ import helix.utils.math.Vector2D;
  * @see {@link Data}, {@link Alarm}
  */
 public abstract class GameObject {
-
-	public static final Logger log = Logger.getLogger(GameObject.class.getCanonicalName());
 
 	/**
 	 * Next ID to be assigned
